@@ -8,7 +8,7 @@
 
 <script type="text/javascript">
 
-function showdisplay()
+function showdisplay(str)
 {
     if (str == "")
     {
@@ -17,6 +17,12 @@ function showdisplay()
     } 
     else 
     {
+        var x = document.forms["myform"]["selectbyinstitute"].value;
+        var y = document.forms["myform"]["selectbydiscipline"].value;
+        var z = document.forms["myform"]["selectstatus"].value;
+
+ 
+        
         if (window.XMLHttpRequest) {
             // code for IE7+, Firefox, Chrome, Opera, Safari
             xmlhttp = new XMLHttpRequest();
@@ -26,11 +32,13 @@ function showdisplay()
         }
         xmlhttp.onreadystatechange = function() {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                document.getElementById("labs").innerHTML = xmlhttp.responseText;
+               document.getElementById("test").innerHTML = xmlhttp.responseText;
+              
             }
-        }    var x = document.forms["myForm"]["SelectInstitute"].value;
-        xmlhttp.open("POST","test.php", true);
-        xmlhttp.send();
+        }   
+        xmlhttp.open("POST", "getlabsbyinstitute.php", true);
+        xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        xmlhttp.send("p=" + x + "&q=" + y + "&r=" + z); 
     }
 
 }
@@ -70,8 +78,8 @@ function showdisplay()
         
 <form name="myform">
 <br> Select institute name: 
-<select name = "SelectInstitute" onclick="showlabsbyinstitute(this.value)">
-<option value="">None</option>
+<select name ="selectbyinstitute">
+<option value="0">None</option>
 <option value="1">Amritha University</option>
 <option value="2">COEP</option>
 <option value="3">Dayalbagh</option>
@@ -86,7 +94,7 @@ function showdisplay()
 <option value="12">NIT-K</option>
 </select><br>
 <br> Select discipline name:
-<select name = "SelectDiscipline" onclick="showlabsbydiscipline(this.value)">
+<select name ="selectbydiscipline">
 <option value="0">None</option>
 <option value="1">Aerospace Engineering</option>
 <option value="2">Biotechnology and Biomedical Engineering</option>
@@ -103,14 +111,14 @@ function showdisplay()
 </select>
 <br><br>
 <br>Select Status:
-<select name = "SelectStatus" onclick="showlabsbystatus(this.value)">
+<select name ="selectstatus">
 <option value="zero">None</option>
 <option value="Hosted">Hosted</option>
 <option value="Not Hosted">Not Hosted</option>
 <option value="Hosted with simulations">Hosted with simulations</option>
 </select>
 <br><br>Select Integration Level:
-<select name = "SelectIntegrationLevel" onclick="showlabsbyintegration(this.value)">
+<select name = "SelectIntegrationLevel">
 <option value="None">None</option>
 <option value="0">0</option>
 <option value="1">1</option>
@@ -120,10 +128,10 @@ function showdisplay()
 <option value="5">5</option>
 </select>
 <br><br>
-<input type="submit" value="search" onclick="showdisplay()">
-
-<h4 id="test" align="center"></h4>
+<input type="button" value="submit" onclick="showdisplay(this.value)"></innput>
 </form>
+<h4 id="test" align="center"></h4>
+
 </div>
 </div>
 </body>

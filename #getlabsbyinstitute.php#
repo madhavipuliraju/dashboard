@@ -28,7 +28,7 @@ echo "</table>";
 
 
 
-else if($p==0 && $q!=0)
+else if($p==0 && $q!=0)//only 
 {
 
 $sql="SELECT * FROM labs WHERE institute_id='$q'";
