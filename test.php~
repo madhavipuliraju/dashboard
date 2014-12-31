@@ -1,5 +1,0 @@
-<?php
-$p=$_POST["p"];
-$q=$_POST["q"];
-echo $p+$q;
-?>
