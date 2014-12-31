@@ -20,6 +20,9 @@ function showdisplay(str)
         var x = document.forms["myform"]["selectbyinstitute"].value;
         var y = document.forms["myform"]["selectbydiscipline"].value;
         var z = document.forms["myform"]["selectbystatus"].value;
+        var w = document.forms["myform"]["selectbyintegrationlevel"].value;
+
+
         
 
 
@@ -40,7 +43,7 @@ function showdisplay(str)
         }   
         xmlhttp.open("POST", "getlabsbyinstitute.php", true);
         xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-        xmlhttp.send("p=" + x + "&q=" + y + "&r=" + z); 
+        xmlhttp.send("p=" + x + "&q=" + y + "&r=" + z + "&s=" + w); 
     }
 
 }
