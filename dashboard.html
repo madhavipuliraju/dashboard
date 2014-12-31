@@ -19,7 +19,9 @@ function showdisplay(str)
     {
         var x = document.forms["myform"]["selectbyinstitute"].value;
         var y = document.forms["myform"]["selectbydiscipline"].value;
-        var z = document.forms["myform"]["selectstatus"].value;
+        var z = document.forms["myform"]["selectbystatus"].value;
+        
+
 
  
         
@@ -111,14 +113,14 @@ function showdisplay(str)
 </select>
 <br><br>
 <br>Select Status:
-<select name ="selectstatus">
-<option value="zero">None</option>
+<select name ="selectbystatus">
+<option value="None">None</option>
 <option value="Hosted">Hosted</option>
 <option value="Not Hosted">Not Hosted</option>
 <option value="Hosted with simulations">Hosted with simulations</option>
 </select>
 <br><br>Select Integration Level:
-<select name = "SelectIntegrationLevel">
+<select name = "selectbyintegrationlevel">
 <option value="None">None</option>
 <option value="0">0</option>
 <option value="1">1</option>
