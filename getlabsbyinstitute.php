@@ -9,7 +9,15 @@ $con = mysqli_connect('localhost','root','root','vlabs_database');
 if (!$con) {
   die('Could not connect: ' . mysqli_error($con));
 }
+?>
+<script>
+function myFunction(str)
+{
+alert("DFD");
+}
+</script>
 
+<?php
 mysqli_select_db($con,"vlabs_database");
 
 if($p!=0 && $q==0 && $r=='None' && $s=='None')//disply only institutes
@@ -43,13 +51,14 @@ echo "<table border='2'>";
 echo "<tr align='center'><td>LAB ID</td><td>LAB NAME</td><td>INTEGRATION LEVEL</td><td>STATUS</td></tr>";
       while($row = mysqli_fetch_array($result)) 
       {  
-       echo "<tr align='left'><td>".$row['lab_id']."</td><td>" . $row['lab_name'] ."</td><td>" . $row['integration_level'] ."</td><td>" . $row['status'] ."</td></tr>";
+    //  echo "<tr align='left'><td>".$row['lab_id']."</td><td>" . $row['lab_name'] ."</td><td>" . $row['integration_level'] ."</td><td>" . $row['status'] ."</td></tr>";
+echo "<tr align='left'><td>$row[lab_id]</td><td><a href='test.php?id=\"$row[lab_name]\"'  value=\"$row[lab_name]\">".$row[lab_name]."</a></td><td>".$row[integration_level]."</td><td>".$row[status]. "</td></tr>";
+
+
 
        }
 echo "</table>";
 }
-
-
 else if($p==0 && $q==0 && $r!='None' && $s=='None') //only status
 {
 
@@ -308,7 +317,11 @@ echo "<tr align='center'><td>LAB ID</td><td>LAB NAME</td><td>INTEGRATION LEVEL</
 echo "</table>";
 }
 
-
+else
+{
+echo "<br><br>";
+echo "<font color='red'> Please Select Atleast One Value..!!</font>";
+}
 
 mysqli_close($con);
 ?> 

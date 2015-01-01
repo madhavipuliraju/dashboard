@@ -10,6 +10,7 @@
 
 function showdisplay(str)
 {
+ 
     if (str == "")
     {
         document.getElementById("labs").innerHTML = "";
@@ -21,13 +22,7 @@ function showdisplay(str)
         var y = document.forms["myform"]["selectbydiscipline"].value;
         var z = document.forms["myform"]["selectbystatus"].value;
         var w = document.forms["myform"]["selectbyintegrationlevel"].value;
-
-
-        
-
-
- 
-        
+               
         if (window.XMLHttpRequest) {
             // code for IE7+, Firefox, Chrome, Opera, Safari
             xmlhttp = new XMLHttpRequest();
