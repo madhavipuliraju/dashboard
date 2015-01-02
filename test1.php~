@@ -1,0 +1,35 @@
+<?php
+$con = mysqli_connect('localhost','root','root','vlabs_database');
+if (!$con) {
+  die('Could not connect: ' . mysqli_error($con));
+}
+$a=$_GET['id'];
+$b=substr($a,1);
+$c=strrev($b);
+$d=substr($c,1);
+$e=strrev($d);
+mysqli_select_db($con,"vlabs_database");
+$sql="SELECT * FROM labs WHERE lab_name='$e'";
+
+$result = mysqli_query($con,$sql);
+$two = mysqli_num_rows($result);
+//echo "Total Number Of Institutes:".$two;
+echo "<br><br>";
+echo "<table border='1'>";
+echo "<h4>Details About <font color='blue'>$e</font> Lab :</h4>";
+
+//echo "<tr><td>INSTITUTE NAME</td></tr>";
+while($row = mysqli_fetch_array($result)) {
+ 
+  
+  echo "<tr align='left'><td>LAB ID</td><td>". $row['lab_id'] ."</td></tr><tr><td>LAB NAME</td><td>" . $row['lab_name'] ."</td></tr><tr><td>DEVELOPER EMAIL-ID</td><td>" . $row['developer'] ."</td></tr><tr><td>INTEGRATION LEVEL</td><td align='center'>" . $row['integration_level'] ."</td></tr><tr><td>BITBUCKET REPOSITORY URL</td><td align='center'>" . $row['repo_url'] ."</td></tr><tr><td> IS SOURCES AVAILABLE</td><td align='center'>" . $row['sources_available'] ."</td></tr><tr><td>HOSTED URL</td><td align='center'>" . $row['hosted_url'] ."</td></tr><tr><td>IS LAB DEPLOYED</td><td align='center'>" . $row['lab_deployed'] ."</td></tr><tr><td>NUMBER OF EXPERIMENTS</td><td align='center'>" . $row['number_of_experiments'] ."</td></tr><tr><td>CONTENT AVAILABLE</td><td align='center'>" . $row['content'] ."</td></tr><tr><td>SIMULATIONS AVAILABLE</td><td align='center'>" . $row['simulation'] ."</td></tr><tr><td>IS WEB2.0 COMPLIANCE</td><td align='center'>" . $row['web2.0_compliance'] ."</td></tr><tr><td>TYPE OF LAB</td><td align='center'>" . $row['type_of_lab'] ."</td></tr><tr><td>AUTOHOSTABLE</td><td align='center'>" . $row['auto_hostable'] ."</td></tr><tr><td>REMARKS</td><td align='center'>" . $row['remarks'] ."</td></tr><tr><td>STATUS</td><td>" . $row['status'] ."</td></tr>";
+ 
+//  echo "<tr align='left'><td>". $row['lab_id'] . "</td></tr>";
+
+}
+
+  echo "</table><br><br>";
+echo "<a href='dashboard.html' style='text-decoration:none'><input type='button' value='Go Back'></input></a>";
+
+mysqli_close($con);
+?> 
