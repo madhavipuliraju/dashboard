@@ -116,16 +116,6 @@ $sql="SELECT * FROM labs a WHERE a.integration_level='$s' and a.discipline_id='$
 
 else
 {
-?>
-<script>
-function a()
-{
-alert("dfd");
-
-}
-</script>
-a();
-<?php
 echo "<br><br>";
 echo "<font color='red'> Please Select Atleast One Value..!!</font>";
 exit();
